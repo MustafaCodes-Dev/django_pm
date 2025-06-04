@@ -15,6 +15,11 @@
                  {{task.description}}
               
             </form>  
+            <form method="post" action = '{% url "Task_delete" task.id %}'>
+                {% csrf_token %}
+                <button type = "submit">Delete</button>
+              
+            </form>  
 
         </li>
 

@@ -6,11 +6,16 @@
 
     {% for project in projects %}
 
-        <li>{{project.title}} <a href= "{% url 'Project_update' project.id %}">Edit</a></li>
+        <li>
+            {{project.title}} <a href= "{% url 'Project_update' project.id %}">Edit</a>
+            <a href="{% url 'Project_delete' project.id %}"> Delete </a>
+
+        </li>
 
     {% empty %}
 
         <li>{% trans "There are no project to show" %}</li>
+
 
 
 
