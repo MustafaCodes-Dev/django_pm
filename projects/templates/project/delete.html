@@ -5,8 +5,13 @@
 <form method="post">
 {% csrf_token %}
 <p class="text-muted my-4">
-    {% trans "Are you sure to delete " %} {{project.title}} ?
+    {% blocktrans with title=project.title %}
+        Are you sure to delete
+    {% endblocktrans %}
+    <bdi>{{ project.title }}</bdi>؟
 </p>
+
+
 
 <input class="btn btn-danger" type="submit" value= "{% trans 'Delete' %}" />
 </form>
