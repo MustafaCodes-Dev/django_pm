@@ -111,11 +111,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'ar'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
+USE_I18N = False
 
 USE_L10N = True
 
@@ -124,9 +124,9 @@ USE_TZ = True
 from django.utils.translation import gettext_lazy as _
 
 LANGUAGES = [
-    ('ar', _('Arabic')),
-    ('en', _('English')),
+    ('en', 'English'),
 ]
+
 
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
@@ -142,6 +142,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL= "/"
+LOGOUT_REDIRECT_URL= "/accounts/login"
 
 INTERNAL_IPS=[
     
