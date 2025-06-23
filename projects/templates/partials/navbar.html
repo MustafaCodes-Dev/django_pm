@@ -33,7 +33,14 @@
               </ul>
             </li>
           </ul>
-
+          <form action="{% url 'set_language' %}" method="post" class="d-flex align-items-center ms-3">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ request.path }}">
+            <select name="language" class="form-select form-select-sm bg-light border-0 me-2" onchange="this.form.submit()">
+              <option value="ar" {% if LANGUAGE_CODE == 'ar' %}selected{% endif %}>العربية</option>
+              <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
+            </select>
+          </form>
           <!-- فورم البحث بجانب القائمة المنسدلة -->
           <form action="{% url 'Project_List' %}" method="get" class="d-flex ms-3">
             <div class="input-group">
@@ -51,6 +58,14 @@
           </form>
         {% else %}
             <div class="d-flex ms-auto">
+              <form action="{% url 'set_language' %}" method="post" class="d-flex align-items-center ms-3">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="{{ request.path }}">
+                <select name="language" class="form-select form-select-sm bg-light border-0 me-2" onchange="this.form.submit()">
+                  <option value="ar" {% if LANGUAGE_CODE == 'ar' %}selected{% endif %}>العربية</option>
+                  <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
+                </select>
+              </form>
               <a class="btn btn-outline-light me-2" href="{% url 'login' %}">{% trans "Login" %}</a>
               <a class="btn btn-outline-light" href="{% url 'register' %}">{% trans "Register" %}</a>
             </div>
