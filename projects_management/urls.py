@@ -3,6 +3,11 @@ from django.contrib import admin
 from django.urls import path , include
 import debug_toolbar
 from django.conf.urls.i18n import i18n_patterns
+from django.utils.translation import gettext_lazy as _
+
+
+admin.site.site_header = _('Project Management')
+admin.site.site_title = _('Project Management')
 
 urlpatterns = [
     path('__debug__',include(debug_toolbar.urls)),
