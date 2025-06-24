@@ -9,6 +9,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+    class Meta:
+        verbose_name= _('Category')
+        verbose_name_plural= _('Category')
     
 class ProjectStatus(models.IntegerChoices):
     PENDING = 1, _('Pending')
@@ -21,25 +24,33 @@ class Project(models.Model):
     description = models.TextField(verbose_name=_("Description"))
     status = models.IntegerField(
         choices=ProjectStatus.choices,
-        default=ProjectStatus.PENDING
+        default=ProjectStatus.PENDING,
+        verbose_name=_('Status')
     )
-    created_at= models.DateTimeField(auto_now_add=True)
+    created_at= models.DateTimeField(auto_now_add=True,verbose_name=_('Created at'))
     updated_at= models.DateTimeField(auto_now=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name=_("Category"))
-    user= models.ForeignKey(AUTH_USER_MODEL , on_delete=models.CASCADE, null=True)
+    user= models.ForeignKey(AUTH_USER_MODEL , on_delete=models.CASCADE,verbose_name=_('User'), null=True)
 
 
     def __str__(self):
         return self.title
     
+    class Meta:
+        verbose_name= _('Project')
+        verbose_name_plural= _('Project')
+    
 
 class Task(models.Model):
-    description = models.TextField()
+    description = models.TextField(verbose_name=_('Description'))
     is_completed = models.BooleanField(default=False)
     project = models.ForeignKey(Project , on_delete=models.CASCADE)
 
     def __str__(self):
         return self.description
+    class Meta:
+        verbose_name= _('Task')
+        verbose_name_plural= _('Task')
     
     
 
