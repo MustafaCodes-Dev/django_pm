@@ -27,7 +27,9 @@ SECRET_KEY = 'django-insecure-s7)di@le63f5kpdc%u&j@4jynd)-x%^77-l!xrl^b*-4vt&dz$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'my-project-management-78e9142effd8.herokuapp.com' , 'http://127.0.0.1'
+]
 
 
 # Application definition
@@ -47,6 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -86,11 +89,11 @@ WSGI_APPLICATION = 'projects_management.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_pm',
-        'USER': 'postgres',
-        'PASSWORD': 'Almoghassil2@',
-        'HOST': 'localhost',
-        'PORT': ''
+        'NAME': 'd9ic6apbtf2pam',
+        'USER': 'u9n7trc35jgcrm',
+        'PASSWORD': 'pd31a2a3bfe297131b2dd27bc80851f8aaba094387eae4350fadc0cbde6daeb88',
+        'HOST': 'cd6emofiekhlj.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com',
+        'PORT': '5432'
     }
 }
 
@@ -143,6 +146,8 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS= [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = [os.path.join(BASE_DIR, 'staticfiles')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
